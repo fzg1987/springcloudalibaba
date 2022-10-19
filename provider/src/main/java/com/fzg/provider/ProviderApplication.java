@@ -1,13 +1,13 @@
-package com.fzg.privider;
+package com.fzg.provider;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PrividerApplication {
+public class ProviderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PrividerApplication.class, args);
+        SpringApplication.run(ProviderApplication.class, args);
     }
 
 }

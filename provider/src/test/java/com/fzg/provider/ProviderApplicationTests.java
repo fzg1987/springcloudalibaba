@@ -1,10 +1,10 @@
-package com.fzg.privider;
+package com.fzg.provider;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PrividerApplicationTests {
+class ProviderApplicationTests {
 
     @Test
     void contextLoads() {
