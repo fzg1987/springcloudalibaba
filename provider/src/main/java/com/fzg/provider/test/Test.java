@@ -1,13 +1,24 @@
 package com.fzg.provider.test;
 
-import org.springframework.web.client.RestTemplate;
+import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.common.message.Message;
 
 public class Test {
-    public static void main(String[] args) throws InterruptedException {
-        RestTemplate restTemplate = new RestTemplate();
-        for (int i = 0; i < 1000; i++) {
-            restTemplate.getForObject("http://localhost:8083/list",String.class);
-            Thread.sleep(200);
-        }
+    public static void main(String[] args) throws Exception {
+        // 设置消息生产者
+        DefaultMQProducer producer = new DefaultMQProducer("myproducer-group");
+
+        // 设置NameServer
+        producer.setNamesrvAddr("192.168.115.128:9876");
+        // 启动生产者
+        producer.start();
+        // 构建消息对象
+        Message message = new Message("myTopic","myTag",("TestMQ").getBytes());
+        // 发送消息
+        SendResult result = producer.send(message,10000);
+        System.out.println(result);
+        // 关闭生产者
+        producer.shutdown();
     }
 }

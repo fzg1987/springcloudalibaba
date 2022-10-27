@@ -4,3 +4,5 @@ provider:
   ribbon:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
     NFLoadBalancerRuleClassName: com.fzg.consumer.configuration.NacosWeightedRule
+rocketmq:
+  name-server: 192.168.115.128:9876
