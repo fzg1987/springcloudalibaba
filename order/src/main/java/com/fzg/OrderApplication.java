@@ -1,9 +1,13 @@
 package com.fzg;
 
+import io.seata.rm.datasource.DataSourceProxy;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.client.RestTemplate;
+
+import javax.sql.DataSource;
 
 @SpringBootApplication
 public class OrderApplication {
@@ -15,5 +19,9 @@ public class OrderApplication {
     @Bean
     public RestTemplate restTemplate(){
         return new RestTemplate();
+    }
+    @Bean
+    public JdbcTemplate jdbcTemplate(DataSource datasource){
+        return new JdbcTemplate(new DataSourceProxy(datasource));
     }
 }
